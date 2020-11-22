@@ -40,20 +40,21 @@ public class InboundDataGenerator {
     void toCsv(int[][] data) {
         String csvFile = "data.csv";
         try(FileWriter writer = new FileWriter(csvFile)) {
-            for(int[] specimen : data) {
-                var row =  Arrays
-                        .stream(specimen)
-                        .mapToObj(String::valueOf)
-                        .reduce((a, b) -> a.concat(CSV_SEPARATOR).concat(b).concat(LINE_SEPARATOR))
-                        .get();
-                writer.write(row);
-            }
-            writer.close();
+            Arrays
+                    .stream(data)
+                    .map(r -> r[0] + CSV_SEPARATOR + r[1] + LINE_SEPARATOR)
+                    .forEach(s -> tryToWriteToFile(writer, s));
         } catch (IOException ex) {
             System.out.println("Failed to export data to CSV");
         }
+    }
 
-
+    private void tryToWriteToFile(FileWriter writer, String s) {
+        try {
+            writer.write(s);
+        } catch (IOException e) {
+            System.err.printf("Failed to write %s to file", s);
+        }
     }
 
     public static void main(String[] args) {
