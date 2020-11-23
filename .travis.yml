@@ -1,1 +1,6 @@
+os: linux
 language: java
+jdk:
+  - openjdk11
+script:
+  - ./gradlew build --scan -s
