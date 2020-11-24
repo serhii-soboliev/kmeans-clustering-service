@@ -1,4 +1,5 @@
 package com.sbk.kmeanscs.algo;
 
-public interface Clus {
+public interface ClusteringInterface {
+    int[][] clusterData(int[][] data);
 }
