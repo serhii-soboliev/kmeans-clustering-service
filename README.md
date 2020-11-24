@@ -1,7 +1,7 @@
+[![Build Status](https://travis-ci.org/SergiySobolev/kmeans-clustering-service.svg?branch=master)](https://travis-ci.org/SergiySobolev/kmeans-clustering-service)
 <!-- Badges -->
 <img src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white"/>
 <img src="https://img.shields.io/badge/azure%20-%230072C6.svg?&style=for-the-badge&logo=azure-devops&logoColor=white"/>
-[![Build Status](https://travis-ci.org/SergiySobolev/kmeans-clustering-service.svg?branch=master)](https://travis-ci.org/SergiySobolev/kmeans-clustering-service)
 <br>
 
 <!-- TABLE OF CONTENTS -->
