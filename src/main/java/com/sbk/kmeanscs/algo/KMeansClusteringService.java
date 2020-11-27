@@ -28,18 +28,23 @@ public class KMeansClusteringService implements ClusteringService {
 
     @Override
     public int[][] clusterData() {
-        var currentCentroids = initializeCentroids();
+        var centroids = initializeCentroids();
         var clusteredData = new int[height][width + 1];
 
         for (int k = 0; k < MAX_ITERATIONS; k++) {
             for (int i = 0; i < height; i++) {
                 var currentPoint = data[i];
                 System.arraycopy(currentPoint, 0, clusteredData[i], 0, width);
-                var closestCentroid = findClosestCentroid(currentPoint, currentCentroids);
+                var closestCentroid = findClosestCentroid(currentPoint, centroids);
                 clusteredData[i][width] = closestCentroid;
+                centroids = calculateNewCentroids(clusteredData);
             }
         }
-        return new int[0][];
+        return clusteredData;
+    }
+
+    private int[][] calculateNewCentroids(int[][] clusteredData) {
+        return new ClusterCentroidsCalculator(clusteredData).calculateCentroids();
     }
 
     private int findClosestCentroid(int[] currentPoint, int[][] centroids) {
