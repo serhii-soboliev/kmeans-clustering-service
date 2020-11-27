@@ -13,15 +13,15 @@ public class KMeansClusteringService implements ClusteringService {
 
     private final int[][] data;
 
-    private final int clusterNum;
+    private final int clusterCount;
 
     private final int width;
 
     private final int height;
 
-    public KMeansClusteringService(int[][] data, int clusterNum) {
+    public KMeansClusteringService(int[][] data, int clusterCount) {
         this.data = data;
-        this.clusterNum = clusterNum;
+        this.clusterCount = clusterCount;
         this.height = data.length;
         this.width = data[0].length;
     }
@@ -44,7 +44,7 @@ public class KMeansClusteringService implements ClusteringService {
     }
 
     private int[][] calculateNewCentroids(int[][] clusteredData) {
-        return new ClusterCentroidsCalculator(clusteredData).calculateCentroids();
+        return new ClusterCentroidsCalculator(clusteredData, clusterCount).calculateCentroids();
     }
 
     private int findClosestCentroid(int[] currentPoint, int[][] centroids) {
@@ -64,7 +64,7 @@ public class KMeansClusteringService implements ClusteringService {
 
     public int[][] initializeCentroids() {
         shuffleArray(data);
-        return Arrays.copyOfRange(data, 0, clusterNum);
+        return Arrays.copyOfRange(data, 0, clusterCount);
     }
 
     private double dist(int[] a, int[] b) {

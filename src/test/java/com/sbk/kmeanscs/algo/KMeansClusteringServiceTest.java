@@ -7,10 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class KMeansClusteringServiceTest {
 
     @Test
-    void clusterData() {
-    }
-
-    @Test
     void initializeCentroids() {
         var idg = new InboundDataGenerator();
         var clusterNums = 3;
