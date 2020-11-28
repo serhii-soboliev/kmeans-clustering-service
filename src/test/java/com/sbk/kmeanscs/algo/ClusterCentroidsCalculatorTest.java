@@ -21,20 +21,40 @@ class ClusterCentroidsCalculatorTest {
     }
 
     @ParameterizedTest(name = "#{index} - Calculation Centroid For One Cluster Test")
-    @MethodSource("clusteredDataAndCentroidProvider")
+    @MethodSource("oneClusterClusteredDataAndCentroidProvider")
     public void calculateCentroidForOneCluster(int[][] clusteredData, int[][] centroids) {
         ClusterCentroidsCalculator ccc = new ClusterCentroidsCalculator(clusteredData, 1);
         assertArrayEquals(centroids, ccc.calculateCentroids());
     }
 
-    static Stream<Arguments> clusteredDataAndCentroidProvider() {
+    @ParameterizedTest(name = "#{index} - Calculation Centroid For Multiple Cluster Test")
+    @MethodSource("multipleClusterClusteredDataAndCentroidProvider")
+    public void calculateCentroidForMultipleCluster(int[][] clusteredData, int[][] centroids) {
+        ClusterCentroidsCalculator ccc = new ClusterCentroidsCalculator(clusteredData, 2);
+        assertArrayEquals(centroids, ccc.calculateCentroids());
+    }
+
+    static Stream<Arguments> oneClusterClusteredDataAndCentroidProvider() {
         return Stream.of(
 
-                arguments(new int[][]{{100, 200, 1}, {50,  150, 1}},
-                          new int[][]{{75, 175,  1}}),
+                arguments(new int[][]{{100, 200, 1}, {50, 150, 1}},
+                        new int[][]{{75, 175, 1}}),
 
-                arguments(new int[][]{{100, 200, 1}, {50,  150, 1}, {300, 200, 1}, {500, 300, 1}},
-                          new int[][]{{237, 212, 1}})
+                arguments(new int[][]{{100, 200, 1}, {50, 150, 1}, {300, 200, 1}, {500, 300, 1}},
+                        new int[][]{{237, 212, 1}})
+        );
+    }
+
+    static Stream<Arguments> multipleClusterClusteredDataAndCentroidProvider() {
+        return Stream.of(
+
+                arguments(new int[][]{{100, 200, 1}, {50, 150, 2}},
+                        new int[][]{{100, 200, 1}, {50, 150, 2}}),
+
+                arguments(new int[][]{{100, 200, 1}, {200, 300, 1}, {50, 150, 2}},
+                        new int[][]{{150, 250, 1}, {50, 150, 2}})
+
+
         );
     }
 

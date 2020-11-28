@@ -31,7 +31,7 @@ public class ClusterCentroidsCalculator {
         var clusterIdx = clusteredData[0][clusterColumnNum];
         var clusterNum = 0;
         var clusterSize = 1;
-        var clusterAcc = new int[dimensionsNum];
+        var clusterAcc = zeroArr();
         System.arraycopy(clusteredData[0], 0, clusterAcc, 0, dimensionsNum);
         for(int i=1; i<clusteredData.length; i++) {
             var currentClusterIdx = clusteredData[i][clusterColumnNum];
@@ -41,6 +41,9 @@ public class ClusterCentroidsCalculator {
                 clusterIdx = currentClusterIdx;
                 clusterNum += 1;
                 clusterSize = 1;
+                clusterAcc = zeroArr();
+                var currentPoint = clusteredData[i];
+                addArrays(currentPoint, clusterAcc);
             } else {
                 clusterSize += 1;
                 var currentPoint = clusteredData[i];
@@ -51,6 +54,10 @@ public class ClusterCentroidsCalculator {
         res[clusterNum] = curCentroid;
         return res;
 
+    }
+
+    private int[] zeroArr() {
+        return new int[dimensionsNum];
     }
 
     private void addArrays(int[] currentPoint, int[] clusterAcc) {
