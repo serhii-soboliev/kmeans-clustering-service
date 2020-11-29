@@ -16,21 +16,21 @@ class ClusterCentroidsCalculatorTest {
     @Test
     public void expectExceptionWhenPassEmptyData() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new ClusterCentroidsCalculator(new int[][]{}, 1);
+            new ClusterCentroidsCalculator(new int[][]{});
         });
     }
 
     @ParameterizedTest(name = "#{index} - Calculation Centroid For One Cluster Test")
     @MethodSource("oneClusterClusteredDataAndCentroidProvider")
     public void calculateCentroidForOneCluster(int[][] clusteredData, int[][] centroids) {
-        ClusterCentroidsCalculator ccc = new ClusterCentroidsCalculator(clusteredData, 1);
+        ClusterCentroidsCalculator ccc = new ClusterCentroidsCalculator(clusteredData);
         assertArrayEquals(centroids, ccc.calculateCentroids());
     }
 
     @ParameterizedTest(name = "#{index} - Calculation Centroid For Double Cluster Test")
-    @MethodSource("doubleClusterClusteredDataAndCentroidProvider")
-    public void calculateCentroidForDoubleCluster(int[][] clusteredData, int[][] centroids) {
-        ClusterCentroidsCalculator ccc = new ClusterCentroidsCalculator(clusteredData, 2);
+    @MethodSource("multipleClusterClusteredDataAndCentroidProvider")
+    public void calculateCentroidForMultipleClusters(int[][] clusteredData, int[][] centroids) {
+        ClusterCentroidsCalculator ccc = new ClusterCentroidsCalculator(clusteredData);
         assertArrayEquals(centroids, ccc.calculateCentroids());
     }
 
@@ -45,7 +45,7 @@ class ClusterCentroidsCalculatorTest {
         );
     }
 
-    static Stream<Arguments> doubleClusterClusteredDataAndCentroidProvider() {
+    static Stream<Arguments> multipleClusterClusteredDataAndCentroidProvider() {
         return Stream.of(
 
                 arguments(new int[][]{{100, 200, 1}, {50, 150, 2}},
@@ -66,8 +66,25 @@ class ClusterCentroidsCalculatorTest {
                                 {25, 20, 1},
                                 {5, 10, 2}
                         }
-                )
+                ),
 
+                arguments(
+                        new int[][]{
+                                {7, 45, 3},
+                                {2, 10, 1},
+                                {3, 3, 2},
+                                {10, 55, 3},
+                                {3, 15, 1},
+                                {7, 17, 2},
+                                {70, 35, 1},
+                                {1, 50, 3},
+                        },
+                        new int[][] {
+                                {25, 20, 1},
+                                {5, 10, 2},
+                                {6, 50, 3}
+                        }
+                )
 
         );
     }

@@ -15,12 +15,19 @@ public class ClusterCentroidsCalculator {
 
     private final int clusterCount;
 
-    public ClusterCentroidsCalculator(int[][] clusteredData, int clusterCount) {
+    public ClusterCentroidsCalculator(int[][] clusteredData) {
         Assert.isTrue(clusteredData.length > 0, "Clustered data could not be empty");
         this.clusteredData = clusteredData;
         this.clusterColumnNum = clusteredData[0].length - 1;
         this.dimensionsNum = clusteredData[0].length - 1;
-        this.clusterCount = clusterCount;
+        this.clusterCount = getClusterCount(clusteredData);
+    }
+
+    private int getClusterCount(int[][] clusteredData) {
+        return (int)Arrays.stream(clusteredData)
+                .map(d -> d[clusterColumnNum])
+                .distinct()
+                .count();
     }
 
     public int[][] calculateCentroids() {

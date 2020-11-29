@@ -2,7 +2,6 @@ package com.sbk.kmeanscs.algo;
 
 import org.springframework.util.Assert;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import static java.lang.Math.*;
@@ -44,7 +43,7 @@ public class KMeansClusteringService implements ClusteringService {
     }
 
     private int[][] calculateNewCentroids(int[][] clusteredData) {
-        return new ClusterCentroidsCalculator(clusteredData, clusterCount).calculateCentroids();
+        return new ClusterCentroidsCalculator(clusteredData).calculateCentroids();
     }
 
     private int findClosestCentroid(int[] currentPoint, int[][] centroids) {
