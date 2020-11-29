@@ -41,7 +41,11 @@ public class KMeansClusteringService implements ClusteringService {
                 var closestCentroid = findClosestCentroid(currentPoint, centroids);
                 clusteredData[i][width] = closestCentroid;
             }
-            centroids = calculateNewCentroids(clusteredData);
+            var newCentroids = calculateNewCentroids(clusteredData);
+            if(Arrays.deepEquals(centroids, newCentroids)) {
+                break;
+            }
+            centroids = newCentroids;
         }
         sortByCoordinatesAndNumerateClusters(clusteredData);
         return clusteredData;
