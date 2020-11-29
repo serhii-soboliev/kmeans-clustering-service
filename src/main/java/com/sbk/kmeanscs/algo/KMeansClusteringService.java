@@ -63,8 +63,13 @@ public class KMeansClusteringService implements ClusteringService {
     }
 
     public int[][] initializeCentroids() {
+        int[][] res = new int[clusterCount][width + 1];
         shuffleArray(data);
-        return Arrays.copyOfRange(data, 0, clusterCount);
+        for(int i=0; i<clusterCount; i++) {
+            System.arraycopy(data[i], 0, res[i], 0, width);
+            res[i][width] = i;
+        }
+        return res;
     }
 
     private double dist(int[] a, int[] b) {

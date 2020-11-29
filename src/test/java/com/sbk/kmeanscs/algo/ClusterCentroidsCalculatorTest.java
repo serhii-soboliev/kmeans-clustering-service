@@ -27,9 +27,9 @@ class ClusterCentroidsCalculatorTest {
         assertArrayEquals(centroids, ccc.calculateCentroids());
     }
 
-    @ParameterizedTest(name = "#{index} - Calculation Centroid For Multiple Cluster Test")
-    @MethodSource("multipleClusterClusteredDataAndCentroidProvider")
-    public void calculateCentroidForMultipleCluster(int[][] clusteredData, int[][] centroids) {
+    @ParameterizedTest(name = "#{index} - Calculation Centroid For Double Cluster Test")
+    @MethodSource("doubleClusterClusteredDataAndCentroidProvider")
+    public void calculateCentroidForDoubleCluster(int[][] clusteredData, int[][] centroids) {
         ClusterCentroidsCalculator ccc = new ClusterCentroidsCalculator(clusteredData, 2);
         assertArrayEquals(centroids, ccc.calculateCentroids());
     }
@@ -45,7 +45,7 @@ class ClusterCentroidsCalculatorTest {
         );
     }
 
-    static Stream<Arguments> multipleClusterClusteredDataAndCentroidProvider() {
+    static Stream<Arguments> doubleClusterClusteredDataAndCentroidProvider() {
         return Stream.of(
 
                 arguments(new int[][]{{100, 200, 1}, {50, 150, 2}},

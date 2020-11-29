@@ -17,6 +17,7 @@ class KMeansClusteringServiceTest {
         var testInstance = new KMeansClusteringService(data, clusterNums);
         var centroids = testInstance.initializeCentroids();
         assertEquals(3, centroids.length, "There should be 3 centroids");
+        assertEquals(3, centroids[0].length, "Centroid must have 3 coordinates");
 
     }
 }
