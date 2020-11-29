@@ -2,7 +2,10 @@ package com.sbk.kmeanscs.algo;
 
 import org.springframework.util.Assert;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
+import java.util.function.ToIntFunction;
 
 import static java.lang.Math.*;
 
@@ -28,6 +31,7 @@ public class KMeansClusteringService implements ClusteringService {
     @Override
     public int[][] clusterData() {
         var centroids = initializeCentroids();
+        System.out.println(Arrays.deepToString(centroids));
         var clusteredData = new int[height][width + 1];
 
         for (int k = 0; k < MAX_ITERATIONS; k++) {
@@ -36,10 +40,31 @@ public class KMeansClusteringService implements ClusteringService {
                 System.arraycopy(currentPoint, 0, clusteredData[i], 0, width);
                 var closestCentroid = findClosestCentroid(currentPoint, centroids);
                 clusteredData[i][width] = closestCentroid;
-                centroids = calculateNewCentroids(clusteredData);
             }
+            centroids = calculateNewCentroids(clusteredData);
         }
+        sortByCoordinatesAndNumerateClusters(clusteredData);
         return clusteredData;
+    }
+
+    private void sortByCoordinatesAndNumerateClusters(int[][] clusteredData) {
+        ToIntFunction<int[]> firstCoordinateComparing = o -> o[0];
+        ToIntFunction<int[]> secondCoordinateComparing = o -> o[1];
+        ToIntFunction<int[]> clusterComparingFunc = o -> o[width];
+        Comparator<int[]> c = Comparator.comparingInt(firstCoordinateComparing)
+                .thenComparingInt(secondCoordinateComparing)
+                .thenComparingInt(clusterComparingFunc);
+        Arrays.sort(clusteredData, c);
+        var oldCluster = clusteredData[0][width];
+        var newCluster = 0;
+        clusteredData[0][width] = newCluster;
+        for(int i=1; i<height; i++) {
+            if(clusteredData[i][width] != oldCluster) {
+                oldCluster = clusteredData[i][width];
+                 newCluster += 1;
+            }
+            clusteredData[i][width] = newCluster;
+        }
     }
 
     private int[][] calculateNewCentroids(int[][] clusteredData) {
@@ -49,13 +74,13 @@ public class KMeansClusteringService implements ClusteringService {
     private int findClosestCentroid(int[] currentPoint, int[][] centroids) {
         Assert.isTrue(centroids.length > 0, "Centroids couldn't be empty");
         var shortestDistance = dist(currentPoint, centroids[0]);
-        var currentClosestCentroid = 0;
+        var currentClosestCentroid = centroids[0][width];
         for (int i = 1; i < centroids.length; i++) {
             var currentCentroid = centroids[i];
             var currentDistance = dist(currentPoint, currentCentroid);
             if (currentDistance < shortestDistance) {
                 shortestDistance = currentDistance;
-                currentClosestCentroid = i;
+                currentClosestCentroid = centroids[i][width];
             }
         }
         return currentClosestCentroid;
@@ -71,11 +96,11 @@ public class KMeansClusteringService implements ClusteringService {
         return res;
     }
 
-    private double dist(int[] a, int[] b) {
-        Assert.isTrue(a.length == b.length, "Vectors should have same length");
+    private double dist(int[] point, int[] centroid) {
+        Assert.isTrue(point.length + 1 == centroid.length, "Vectors should have same length");
         double distance = 0;
-        for (int i = 0; i < a.length; i++) {
-            distance += sqrt(pow(a[i] - b[i], 2));
+        for (int i = 0; i < point.length; i++) {
+            distance += pow(point[i] - centroid[i], 2);
         }
         return distance;
     }

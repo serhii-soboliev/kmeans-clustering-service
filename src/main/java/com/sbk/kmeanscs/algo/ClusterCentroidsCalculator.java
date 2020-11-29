@@ -32,7 +32,7 @@ public class ClusterCentroidsCalculator {
 
     public int[][] calculateCentroids() {
         var res = new int[clusterCount][dimensionsNum+1];
-        Arrays.sort(clusteredData, Comparator.comparingDouble(o -> o[clusterColumnNum]));
+        Arrays.sort(clusteredData, Comparator.comparingInt(o -> o[clusterColumnNum]));
         var clusterIdx = clusteredData[0][clusterColumnNum];
         var clusterNum = 0;
         var clusterSize = 1;
@@ -57,6 +57,7 @@ public class ClusterCentroidsCalculator {
         }
         var curCentroid = calculateCentroidForCluster(clusterIdx, clusterSize, clusterAcc);
         res[clusterNum] = curCentroid;
+        Arrays.sort(res, Comparator.comparingInt(o -> o[clusterColumnNum]));
         return res;
 
     }
