@@ -1,5 +1,7 @@
-package com.sbk.kmeanscs.algo;
+package com.sbk.kmeanscs.algo.tasks;
 
+import com.sbk.kmeanscs.algo.ClusterCentroidsCalculator;
+import com.sbk.kmeanscs.algo.tasks.ClusteringTask;
 import org.springframework.util.Assert;
 
 import java.util.Arrays;

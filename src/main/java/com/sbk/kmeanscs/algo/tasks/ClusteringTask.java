@@ -1,4 +1,4 @@
-package com.sbk.kmeanscs.algo;
+package com.sbk.kmeanscs.algo.tasks;
 
 public interface ClusteringTask {
     int[][] clusterData();

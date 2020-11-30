@@ -1,5 +1,7 @@
 package com.sbk.kmeanscs.algo;
 
+import com.sbk.kmeanscs.algo.tasks.ClusteringTask;
+import com.sbk.kmeanscs.algo.tasks.KMeansClusteringTask;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
