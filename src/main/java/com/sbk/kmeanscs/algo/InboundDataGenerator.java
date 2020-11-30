@@ -31,12 +31,6 @@ public class InboundDataGenerator {
         return result;
     }
 
-    void print(int[][] data) {
-        for (int[] s : data) {
-            System.out.printf("[%s, %s]%n", s[0], s[1]);
-        }
-    }
-
     void toCsv(int[][] data) {
         String csvFile = "data.csv";
         try(FileWriter writer = new FileWriter(csvFile)) {

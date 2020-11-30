@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.Random;
 import java.util.function.ToIntFunction;
 
-import static java.lang.Math.*;
+import static java.lang.Math.pow;
 
 public class KMeansClusteringService implements ClusteringService {
 
