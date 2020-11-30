@@ -11,13 +11,13 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-class KMeansClusteringServiceTest {
+class KMeansClusteringTaskTest {
 
     @ParameterizedTest(name = "#{index} - Clustering Data Test")
     @Disabled
     @MethodSource("dataAndClusteredDataProvider")
     public void clusteringData(int[][] data, int clusterNum, int[][] clusteredData) {
-        ClusteringService testingInstance = new KMeansClusteringService(data, clusterNum);
+        ClusteringTask testingInstance = new KMeansClusteringTask(data, clusterNum);
         int[][] expected = testingInstance.clusterData();
         System.out.println(Arrays.deepToString(expected));
         assertArrayEquals(expected, clusteredData);

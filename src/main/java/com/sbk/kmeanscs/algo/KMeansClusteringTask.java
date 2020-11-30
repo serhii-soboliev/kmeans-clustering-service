@@ -9,7 +9,7 @@ import java.util.function.ToIntFunction;
 
 import static java.lang.Math.pow;
 
-public class KMeansClusteringService implements ClusteringService {
+public class KMeansClusteringTask implements ClusteringTask {
 
     private final int MAX_ITERATIONS = 1000;
 
@@ -21,7 +21,7 @@ public class KMeansClusteringService implements ClusteringService {
 
     private final int height;
 
-    public KMeansClusteringService(int[][] data, int clusterCount) {
+    public KMeansClusteringTask(int[][] data, int clusterCount) {
         this.data = data;
         this.clusterCount = clusterCount;
         this.height = data.length;

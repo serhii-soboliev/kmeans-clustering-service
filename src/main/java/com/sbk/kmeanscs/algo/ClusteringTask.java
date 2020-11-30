@@ -1,5 +1,5 @@
 package com.sbk.kmeanscs.algo;
 
-public interface ClusteringService {
+public interface ClusteringTask {
     int[][] clusterData();
 }
