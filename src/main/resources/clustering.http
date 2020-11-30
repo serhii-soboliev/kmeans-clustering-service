@@ -1,0 +1,8 @@
+GET http://localhost:11111/clusterdata
+Content-Type: application/json
+
+{
+  "type":"KMEANS"
+}
+
+###

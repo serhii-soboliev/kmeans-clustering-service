@@ -24,6 +24,7 @@ public class KMeansClusteringTask implements ClusteringTask {
     private final int height;
 
     public KMeansClusteringTask(int[][] data, int clusterCount) {
+        Assert.notNull(data, "Data couldn't be null");
         this.data = data;
         this.clusterCount = clusterCount;
         this.height = data.length;
