@@ -1,5 +1,7 @@
 package com.sbk.kmeanscs.algo;
 
+import org.springframework.util.Assert;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,7 +14,11 @@ public class InboundDataGenerator {
     private static final int CLUSTER_SIZE = 100;
     private static final int POINTS_COUNT = 2;
 
-    int[][] generate(int clusterNum, int[][] clusterBounds) {
+    public int[][] generate(int clusterNum, int[][] clusterBounds) {
+        Assert.isTrue(clusterNum > 0, "Cluster Number should be more than 0");
+        Assert.notNull(clusterBounds, "Bounds couldn't be null");
+        Assert.isTrue(clusterNum*2 == clusterBounds.length, "Each cluster should have two bounds");
+
         var randomizer = new Random();
         var totalSpecimenCount = CLUSTER_SIZE * clusterNum;
         var result = new int[totalSpecimenCount][POINTS_COUNT];
