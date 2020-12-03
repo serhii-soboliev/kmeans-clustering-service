@@ -32,4 +32,11 @@ public class ClusteringController {
         return new GenerateResponse(generatedData);
     }
 
+    @GetMapping(path = "/generatedata/default")
+    public GenerateResponse generateDataDefault() {
+        var inboundDataGenerator = new InboundDataGenerator();
+        var generatedData = inboundDataGenerator.defaultGenerate();
+        return new GenerateResponse(generatedData);
+    }
+
 }
