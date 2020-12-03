@@ -10,9 +10,6 @@ Content-Type: application/json
 GET http://localhost:11111/generatedata
 Content-Type: application/json
 
-{
-  "clusterNum": 3,
-  "bounds": [[100, 200],[100, 200],[350, 550],[350, 550],[2000, 2500],[2000, 2500]]
-}
+{"clusterNum": 3, "bounds": [[100, 200],[100, 200],[350, 550],[350, 550],[2000, 2500],[2000, 2500]]}
 
 ###
