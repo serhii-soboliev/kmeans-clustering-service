@@ -40,8 +40,8 @@ public class InboundDataGenerator {
     public int[][] defaultGenerate() {
         var clusterNums = 3;
         var bounds = new int[][]{{100, 200},   {100, 200},
-                {350, 550},   {350, 550},
-                {2000, 2500}, {2000, 2500}};
+                {350, 750},   {350, 750},
+                {1000, 2500}, {1000, 2500}};
         return generate(clusterNums, bounds);
     }
 
