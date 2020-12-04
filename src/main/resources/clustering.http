@@ -5,7 +5,7 @@ Content-Type: application/json
   "type": "KMEANS"
 }
 
-###
+### Generate Data
 
 GET http://localhost:11111/generatedata
 Content-Type: application/json
