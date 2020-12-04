@@ -28,7 +28,7 @@ TBD
 3. Build backend: *./gradlew build*
 4. Run backend: *java -jar build/libs/kmeans-clustering-service*.jar . By default, backend service will start on port 11111.
 
-#Generate data
+# Generate data
 Backend provides endpoint to generate synthetic data that could be divided into clusters:
 
 **URL**
