@@ -2,6 +2,10 @@ provider "azurerm" {
   features {}
 }
 
-module "backend" {
-  source = ".//backend"
+module "backend_vm" {
+  source = ".//backend_vm"
+}
+
+module "backend_container" {
+  source = ".//backend_container"
 }
