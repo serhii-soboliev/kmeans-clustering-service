@@ -14,6 +14,7 @@
 * [Clustering visualization example](#clustering-visualization-example)
 * [Build and run guidance](#build-and-run-guidance)
 * [Generate data](#generate-data)
+* [Azhure deployment](#azure-deployment)
 
 <!-- ABOUT THE PROJECT -->
 # About the project
@@ -66,4 +67,5 @@ _Response visualization:_
 ![Generated data response visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/generatedata.png)
 
 
-
+# Azure deployment
+TBD
