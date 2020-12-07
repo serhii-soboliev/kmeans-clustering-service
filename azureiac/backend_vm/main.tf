@@ -1,5 +1,5 @@
-resource "azurerm_resource_group" "kmeans_cs_rg" {
-  name = "kmenas_cs_rg"
+resource "azurerm_resource_group" "kmeans_cs_vm_rg" {
+  name = "kmenas_cs_vm_rg"
   location = "West Europe"
 }
 
