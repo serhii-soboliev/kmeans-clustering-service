@@ -8,4 +8,5 @@ resource "azurerm_container_registry" "kmeans_cr_container_registry" {
   resource_group_name      = azurerm_resource_group.kmeans_cs_cnt_rg.name
   location                 = "West Europe"
   sku                      = "Basic"
+  admin_enabled            = true
 }
