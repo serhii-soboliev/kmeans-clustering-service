@@ -13,6 +13,7 @@ build/
 out/
 azureiac/.terraform
 azureiac/backend_container/variables.tf
+azureiac/frontend_container/variables.tf
 !**/src/main/**/out/
 !**/src/test/**/out/
 *.ipynb_checkpoints
