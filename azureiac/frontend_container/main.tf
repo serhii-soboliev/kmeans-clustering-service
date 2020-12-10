@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "kmeans_cs_frnt_cnt_rg" {
 //}
 
 
-resource "azurerm_container_group" "backend_container" {
+resource "azurerm_container_group" "frontend_container" {
   name = "frontend_container"
   location = azurerm_resource_group.kmeans_cs_frnt_cnt_rg.location
   resource_group_name = azurerm_resource_group.kmeans_cs_frnt_cnt_rg.name
