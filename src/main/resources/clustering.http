@@ -7,7 +7,7 @@ Content-Type: application/json
 
 ### Generate Data
 
-GET http://{{host}}:{{port}}/generatedata
+POST http://{{host}}:{{port}}/generatedata
 Content-Type: application/json
 
 {"clusterNum": 3, "bounds": [[100, 200],[100, 200],[350, 550],[350, 550],[2000, 2500],[2000, 2500]]}

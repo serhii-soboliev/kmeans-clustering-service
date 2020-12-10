@@ -6,14 +6,19 @@ import com.sbk.kmeanscs.api.request.GenerateRequest;
 import com.sbk.kmeanscs.api.response.ClusteringResponse;
 import com.sbk.kmeanscs.api.response.GenerateResponse;
 import com.sbk.kmeanscs.service.ClusteringService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ClusteringController {
 
+    private final static Logger LOG = LoggerFactory.getLogger(ClusteringController.class);
     private final ClusteringService clusteringService;
+
 
     public ClusteringController(ClusteringService clusteringService) {
         this.clusteringService = clusteringService;
@@ -25,14 +30,15 @@ public class ClusteringController {
         return new ClusteringResponse(res);
     }
 
-    @GetMapping(path = "/generatedata")
+    @PostMapping(path = "/generatedata")
     public GenerateResponse generateData(@RequestBody GenerateRequest generateRequest) {
+        LOG.info("Generate request body: {}", generateRequest);
         var inboundDataGenerator = new InboundDataGenerator();
         var generatedData = inboundDataGenerator.generate(generateRequest.clusterNum, generateRequest.bounds);
         return new GenerateResponse(generatedData);
     }
 
-    @GetMapping(path = "/generatedata/default")
+    @PostMapping(path = "/generatedata/default")
     public GenerateResponse generateDataDefault() {
         var inboundDataGenerator = new InboundDataGenerator();
         var generatedData = inboundDataGenerator.defaultGenerate();

@@ -1,5 +1,7 @@
 package com.sbk.kmeanscs.api.request;
 
+import java.util.Arrays;
+
 public class GenerateRequest {
     public int clusterNum;
     public int[][] bounds;
@@ -9,4 +11,11 @@ public class GenerateRequest {
         this.bounds = bounds;
     }
 
+    @Override
+    public String toString() {
+        return String.format(
+                "Cluster Num = %s, bounds = %s",
+                clusterNum,
+                Arrays.deepToString(bounds));
+    }
 }
