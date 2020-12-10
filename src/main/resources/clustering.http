@@ -1,4 +1,4 @@
-GET http://{{host}}:{{port}}/clusterdata
+POST http://{{host}}:{{port}}/clusterdata
 Content-Type: application/json
 
 {

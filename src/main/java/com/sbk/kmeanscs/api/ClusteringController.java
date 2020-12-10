@@ -24,8 +24,9 @@ public class ClusteringController {
         this.clusteringService = clusteringService;
     }
 
-    @GetMapping(path = "/clusterdata")
+    @PostMapping(path = "/clusterdata")
     public ClusteringResponse clusterData(@RequestBody ClusteringRequest clusteringRequest) {
+        LOG.info("Clustering request body: {}", clusteringRequest);
         var res = clusteringService.clusterData(clusteringRequest.data, clusteringRequest.clusterNum, clusteringRequest.type);
         return new ClusteringResponse(res);
     }
