@@ -10,10 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -35,7 +34,7 @@ class ClusteringControllerTest {
                             {350, 550}, {350, 550},
                             {2000, 2500}, {2000, 2500}});
         MvcResult result = this.mockMvc
-                .perform(get("/generatedata")
+                .perform(post("/generatedata")
                         .contentType(APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(content))
                 )
@@ -51,7 +50,7 @@ class ClusteringControllerTest {
     public void generateData_noBounds() throws Exception {
         GenerateRequest content = new GenerateRequest(3, null);
         this.mockMvc
-                .perform(get("/generatedata")
+                .perform(post("/generatedata")
                         .contentType(APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(content))
                 )
