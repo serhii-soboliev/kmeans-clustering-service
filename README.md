@@ -26,6 +26,7 @@ Service, that implements clustering technique using K-means algorithm.
 The following screenshots show the result of algorithm's execution over the set of 2D points that could be separated into 4 clusters.
 
 ![Clustering visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/visualization_example.png)
+![Clustering visualization 2](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/visualization_example_1.png)
 
 
 # Build and run guidance
