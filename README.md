@@ -105,7 +105,7 @@ Content-Type: application/json
 where generated_data is the result of Generate data request
 
 _Response visualization:_
-![Clusterized data response visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/clusterizedata.png)
+![Clusterized data response visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/clusteredata.png)
 
 # Azure deployment
 TBD
