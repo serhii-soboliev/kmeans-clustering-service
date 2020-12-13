@@ -22,7 +22,11 @@
 Service, that implements clustering technique using K-means algorithm. 
 
 # Clustering visualization example
-TBD
+
+The following screenshots show the result of algorithm's execution over the set of 2D points that could be separated into 4 clusters.
+
+![Clustering visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/visualization_example.png)
+
 
 # Build and run guidance
 1. Clone project:  *git clone https://github.com/SergiySobolev/kmeans-clustering-service.git*
@@ -65,6 +69,7 @@ Content-Type: application/json
 {"clusterNum": 3, "bounds": [[100, 200],[100, 200],[350, 550],[350, 550],[2000, 2500],[2000, 2500]]}
 
 _Response visualization:_
+
 ![Generated data response visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/generatedata.png)
 
 # Clusterize data
