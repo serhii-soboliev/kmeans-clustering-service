@@ -62,16 +62,6 @@ public class KMeansClusteringTask implements ClusteringTask {
                 .thenComparingInt(secondCoordinateComparing)
                 .thenComparingInt(clusterComparingFunc);
         Arrays.sort(clusteredData, c);
-        var oldCluster = clusteredData[0][width];
-        var newCluster = 0;
-        clusteredData[0][width] = newCluster;
-        for(int i=1; i<height; i++) {
-            if(clusteredData[i][width] != oldCluster) {
-                oldCluster = clusteredData[i][width];
-                 newCluster += 1;
-            }
-            clusteredData[i][width] = newCluster;
-        }
     }
 
     private int[][] calculateNewCentroids(int[][] clusteredData) {

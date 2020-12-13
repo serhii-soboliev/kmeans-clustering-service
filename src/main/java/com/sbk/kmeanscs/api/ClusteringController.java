@@ -8,7 +8,6 @@ import com.sbk.kmeanscs.api.response.GenerateResponse;
 import com.sbk.kmeanscs.service.ClusteringService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClusteringController {
 
     private final static Logger LOG = LoggerFactory.getLogger(ClusteringController.class);
-    private final ClusteringService clusteringService;
 
+    private final ClusteringService clusteringService;
 
     public ClusteringController(ClusteringService clusteringService) {
         this.clusteringService = clusteringService;
@@ -28,7 +27,9 @@ public class ClusteringController {
     public ClusteringResponse clusterData(@RequestBody ClusteringRequest clusteringRequest) {
         LOG.info("Clustering request body: {}", clusteringRequest);
         var res = clusteringService.clusterData(clusteringRequest.data, clusteringRequest.clusterNum, clusteringRequest.type);
-        return new ClusteringResponse(res);
+        var clusteringResponse = new ClusteringResponse(res);
+        LOG.info("Clustering response body: {}", clusteringRequest);
+        return clusteringResponse;
     }
 
     @PostMapping(path = "/generatedata")
