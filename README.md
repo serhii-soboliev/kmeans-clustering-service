@@ -14,7 +14,8 @@
 * [Clustering visualization example](#clustering-visualization-example)
 * [Build and run guidance](#build-and-run-guidance)
 * [Generate data](#generate-data)
-* [Azhure deployment](#azure-deployment)
+* [Clusterize data](#clusterize-data)
+* [Azure deployment](#azure-deployment)
 
 <!-- ABOUT THE PROJECT -->
 # About the project
@@ -36,7 +37,7 @@ Backend provides endpoint to generate synthetic data that could be divided into 
 /generatedata
 
 **METHOD**
-GET
+POST
 
 **HEADERS**
 Content-Type: application/json
@@ -57,7 +58,7 @@ Generate data that could be divided into 3 clusters
 
 _Request:_
 
-GET http://{host}:11111/generatedata
+POST http://{host}:11111/generatedata
 
 Content-Type: application/json
 
@@ -66,6 +67,45 @@ Content-Type: application/json
 _Response visualization:_
 ![Generated data response visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/generatedata.png)
 
+# Clusterize data
+Backend provides endpoint to separate points into clusters:
+
+**URL**
+/clusterdata
+
+**METHOD**
+POST
+
+**HEADERS**
+Content-Type: application/json
+
+**DATA PARAMS**
+
+ type: Algorithm type. Only possible value for the moment is "KMEANS". Another algorithms will be added furter
+  
+ clusterNum: Number of clusters the data must be divided to
+ 
+ data: Array of 2d point to clusterize 
+ 
+**RESPONSE**
+
+data: array of clusterized points, where clusterized points is [x,y,cluster_index] 
+
+**EXAMPLE**
+
+Divide data into 3 clusters
+
+_Request:_
+
+POST http://{host}:11111/clusterdata
+
+Content-Type: application/json
+
+{'type':'KMEANS', 'clusterNum': 3, 'data':generated_data}
+where generated_data is the result of Generate data request
+
+_Response visualization:_
+![Clusterized data response visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/clusterizedata.png)
 
 # Azure deployment
 TBD
