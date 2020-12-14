@@ -114,4 +114,18 @@ _Response visualization:_
 ![Clusterized data response visualization](https://github.com/SergiySobolev/kmeans-clustering-service/blob/master/visualization/screenshots/clusteredata.png)
 
 # Azure deployment
-TBD
+The entire solution can be deployed on Azure Cloud using [Container Instances](https://azure.microsoft.com/en-us/services/container-instances/)
+
+**Prerequisites:**
+1. Get [Microsoft Azure Subscription](https://azure.microsoft.com/en-us/free/)
+2. Install [Terraform](https://www.terraform.io/docs/enterprise/install/index.html)
+
+**Steps:**
+1. git clone https://github.com/SergiySobolev/kmeans-clustering-service.git
+2. cd kmeans-clustering-service/azureiac
+3. terraform init
+4. terraform plan -target=module.backend_container
+5. terraform apply -target=module.backend_container
+6. terraform plan -target=module.frontend_container
+7. terraform apply -target=module.frontend_container
+8. Go to [Jupyter Notebook](http://kmeans-frontend.westeurope.azurecontainer.io:8888/notebooks/clustering.ipynb)
