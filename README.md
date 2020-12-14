@@ -19,7 +19,7 @@
 
 <!-- ABOUT THE PROJECT -->
 # About the project
-Service, that implements clustering technique using K-means algorithm. 
+Service, that implements clustering technique using [K-means algorithm](https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a). 
 
 # Clustering visualization example
 
