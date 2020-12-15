@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/SergiySobolev/kmeans-clustering-service.svg?branch=master)](https://travis-ci.org/SergiySobolev/kmeans-clustering-service)
+[![Build Status](https://travis-ci.org/serhii-soboliev/kmeans-clustering-service.svg?branch=master)](https://travis-ci.org/SergiySobolev/kmeans-clustering-service)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/serhii-soboliev/kmeans-clustering-service.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/SergiySobolev/kmeans-clustering-service/alerts/)
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/SergiySobolev/kmeans-clustering-service.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/SergiySobolev/kmeans-clustering-service/context:java)
 
